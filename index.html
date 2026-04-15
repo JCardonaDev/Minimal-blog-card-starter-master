@@ -85,26 +85,10 @@
         display: block;
       }
 
-      /*
-        El área de texto debajo de la imagen.
-        - padding: 16px → espacio interior de 16px en los 4 lados
-          Esto es lo que hace que el texto no quede pegado a los bordes
-      */
       .content {
         padding: 16px;
       }
 
-      /*
-        La etiqueta/badge "Design"
-        - display: inline-block → permite ponerle padding y que no ocupe
-          toda la línea (los "span" son inline por defecto y no aceptan bien el padding)
-        - background: #e6f0ff → fondo azul muy claro
-        - color: #4f46e5 → texto azul/morado
-        - padding: 4px 10px → 4px arriba/abajo, 10px izquierda/derecha
-        - border-radius: 20px → número grande = forma de píldora/cápsula
-        - font-size: 12px → texto pequeño
-        - margin-bottom: 6px → espacio debajo del tag antes del título
-      */
       .tag {
         background: #e6f0ff;
         color: #4f46e5;
@@ -115,13 +99,6 @@
         margin-bottom: 6px;
       }
 
-      /*
-        El título "Embracing Minimalism"
-        - font-size: 18px → tamaño del texto
-        - font-weight: 700 → negrita (400=normal, 700=bold)
-        - margin-bottom: 6px → espacio debajo antes de la descripción
-        - color: #111 → casi negro
-      */
       h1 {
         font-size: 18px;
         font-weight: 700;
@@ -129,14 +106,6 @@
         margin-bottom: 6px;
       }
 
-      /*
-        El párrafo de descripción
-        - font-size: 14px → texto un poco más pequeño
-        - color: #888 → gris medio (más claro que el título)
-        - margin-bottom: 20px → espacio generoso antes del autor
-        - line-height: 1.5 → espacio entre líneas (1.5x el tamaño del texto)
-          Hace el texto más fácil de leer
-      */
       .desc {
         font-size: 14px;
         color: #888;
@@ -144,17 +113,11 @@
         line-height: 1.5;
       }
 
-      /*
-        El nombre del autor
-        - font-size: 13px → el más pequeño de los textos
-        - color: #555 → gris oscuro
-      */
       .author {
         font-size: 13px;
         color: #555;
       }
 
-      /* Créditos al pie de la página */
       .author-info {
         font-size: 14px;
         text-align: center;
@@ -173,17 +136,9 @@
   <body>
 
     <div class="box">
-
-      <!-- IMAGEN: dentro de su propio contenedor -->
       <div class="image">
-        <img src="/resources/Cactus.jpg" alt="un cactus en una matera con un fondo rosa">
+        <img src="Cactus.jpg" alt="un cactus en una matera con un fondo rosa">
       </div>
-
-      <!-- 
-        CONTENIDO: tag, título, descripción y autor van TODOS dentro de .content
-        Ese era tu error principal: h1, .desc y .author estaban fuera del .content,
-        entonces no tenían el padding de 16px y quedaban pegados al borde
-      -->
       <div class="content">
         <span class="tag">Design</span>
         <h1>Embracing Minimalism</h1>
