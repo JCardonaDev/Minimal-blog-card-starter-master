@@ -6,48 +6,20 @@
     <title>Minimal Blog Card</title>
 
     <style>
-      /* 
-        El asterisco (*) selecciona TODOS los elementos de la página.
-        - margin: 0 → quita el espacio exterior que los navegadores agregan por defecto
-        - padding: 0 → quita el espacio interior por defecto
-        - box-sizing: border-box → hace que el padding y el borde se incluyan
-          dentro del ancho total del elemento (más fácil de calcular tamaños)
-      */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      /*
-        El body es el contenedor de toda la página.
-        - height: 100vh → ocupa el 100% de la altura visible de la pantalla
-          (vh = viewport height, la altura de la ventana del navegador)
-        - display: flex → activa "flexbox", un sistema para acomodar elementos
-        - justify-content: center → centra horizontalmente
-        - align-items: center → centra verticalmente
-        Resultado: la tarjeta queda centrada en la pantalla.
-      */
       body {
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         background: #f2f5f9;
-        /* flex-direction por defecto es "row" (en fila),
-           pero como solo tenemos un elemento, no importa mucho aquí */
       }
 
-      /*
-        La caja principal de la tarjeta.
-        - background: #fff → fondo blanco
-        - border-radius: 16px → esquinas redondeadas (a mayor número, más curvas)
-        - width: 336px → ancho fijo de 336 píxeles (como en el diseño)
-        - overflow: hidden → MUY IMPORTANTE: hace que la imagen no se salga
-          de las esquinas redondeadas. Sin esto, la imagen ignoraría el border-radius
-        - box-shadow → sombra debajo de la tarjeta para darle profundidad
-          Los valores son: horizontal vertical desenfoque color
-      */
       .box {
         background: #fff;
         border-radius: 16px;
@@ -57,32 +29,19 @@
         font-family: Arial, sans-serif;
       }
 
-      /*
-        El contenedor de la imagen.
-        - width: 100% → ocupa todo el ancho de .box (336px)
-        - height: 152px → altura fija según el diseño
-        - overflow: hidden → por si la imagen es más grande, la recorta
-      */
       .image {
         width: 100%;
         height: 152px;
         overflow: hidden;
       }
 
-      /*
-        La imagen dentro de .image
-        - width: 100% → se estira para llenar el contenedor
-        - height: 100% → llena también la altura
-        - object-fit: cover → recorta la imagen para que llene el espacio
-          SIN deformarla (como cuando pones una foto como fondo en Instagram)
-        - display: block → elimina el pequeño espacio que tienen las imágenes
-          por defecto debajo (son "inline" por defecto, como si fueran letras)
-      */
       .image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        padding: 16px;
+        border-radius: 24px;
       }
 
       .content {
@@ -131,6 +90,11 @@
         text-decoration: none;
         color: inherit;
       }
+
+      .line + .author{
+        border-top: #eee 1px solid;
+
+      }
     </style>
   </head>
   <body>
@@ -146,6 +110,7 @@
           From minimalist sculptures to minimalist paintings, this blog will
           inspire you to appreciate the beauty that lies in simplicity
         </p>
+        <div class="line"></div>
         <p class="author">Annie Spratt</p>
       </div>
 
