@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minimal Blog Card</title>
+
+    <style>
+      /* 
+        El asterisco (*) selecciona TODOS los elementos de la página.
+        - margin: 0 → quita el espacio exterior que los navegadores agregan por defecto
+        - padding: 0 → quita el espacio interior por defecto
+        - box-sizing: border-box → hace que el padding y el borde se incluyan
+          dentro del ancho total del elemento (más fácil de calcular tamaños)
+      */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /*
+        El body es el contenedor de toda la página.
+        - height: 100vh → ocupa el 100% de la altura visible de la pantalla
+          (vh = viewport height, la altura de la ventana del navegador)
+        - display: flex → activa "flexbox", un sistema para acomodar elementos
+        - justify-content: center → centra horizontalmente
+        - align-items: center → centra verticalmente
+        Resultado: la tarjeta queda centrada en la pantalla.
+      */
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f2f5f9;
+        /* flex-direction por defecto es "row" (en fila),
+           pero como solo tenemos un elemento, no importa mucho aquí */
+      }
+
+      /*
+        La caja principal de la tarjeta.
+        - background: #fff → fondo blanco
+        - border-radius: 16px → esquinas redondeadas (a mayor número, más curvas)
+        - width: 336px → ancho fijo de 336 píxeles (como en el diseño)
+        - overflow: hidden → MUY IMPORTANTE: hace que la imagen no se salga
+          de las esquinas redondeadas. Sin esto, la imagen ignoraría el border-radius
+        - box-shadow → sombra debajo de la tarjeta para darle profundidad
+          Los valores son: horizontal vertical desenfoque color
+      */
+      .box {
+        background: #fff;
+        border-radius: 16px;
+        width: 336px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+      }
+
+      /*
+        El contenedor de la imagen.
+        - width: 100% → ocupa todo el ancho de .box (336px)
+        - height: 152px → altura fija según el diseño
+        - overflow: hidden → por si la imagen es más grande, la recorta
+      */
+      .image {
+        width: 100%;
+        height: 152px;
+        overflow: hidden;
+      }
+
+      /*
+        La imagen dentro de .image
+        - width: 100% → se estira para llenar el contenedor
+        - height: 100% → llena también la altura
+        - object-fit: cover → recorta la imagen para que llene el espacio
+          SIN deformarla (como cuando pones una foto como fondo en Instagram)
+        - display: block → elimina el pequeño espacio que tienen las imágenes
+          por defecto debajo (son "inline" por defecto, como si fueran letras)
+      */
+      .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /*
+        El área de texto debajo de la imagen.
+        - padding: 16px → espacio interior de 16px en los 4 lados
+          Esto es lo que hace que el texto no quede pegado a los bordes
+      */
+      .content {
+        padding: 16px;
+      }
+
+      /*
+        La etiqueta/badge "Design"
+        - display: inline-block → permite ponerle padding y que no ocupe
+          toda la línea (los "span" son inline por defecto y no aceptan bien el padding)
+        - background: #e6f0ff → fondo azul muy claro
+        - color: #4f46e5 → texto azul/morado
+        - padding: 4px 10px → 4px arriba/abajo, 10px izquierda/derecha
+        - border-radius: 20px → número grande = forma de píldora/cápsula
+        - font-size: 12px → texto pequeño
+        - margin-bottom: 6px → espacio debajo del tag antes del título
+      */
+      .tag {
+        background: #e6f0ff;
+        color: #4f46e5;
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-bottom: 6px;
+      }
+
+      /*
+        El título "Embracing Minimalism"
+        - font-size: 18px → tamaño del texto
+        - font-weight: 700 → negrita (400=normal, 700=bold)
+        - margin-bottom: 6px → espacio debajo antes de la descripción
+        - color: #111 → casi negro
+      */
+      h1 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 6px;
+      }
+
+      /*
+        El párrafo de descripción
+        - font-size: 14px → texto un poco más pequeño
+        - color: #888 → gris medio (más claro que el título)
+        - margin-bottom: 20px → espacio generoso antes del autor
+        - line-height: 1.5 → espacio entre líneas (1.5x el tamaño del texto)
+          Hace el texto más fácil de leer
+      */
+      .desc {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      /*
+        El nombre del autor
+        - font-size: 13px → el más pequeño de los textos
+        - color: #555 → gris oscuro
+      */
+      .author {
+        font-size: 13px;
+        color: #555;
+      }
+
+      /* Créditos al pie de la página */
+      .author-info {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 16px;
+        color: rgb(55, 65, 81);
+        position: absolute;
+        bottom: 16px;
+      }
+
+      .author-info a {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="box">
+
+      <!-- IMAGEN: dentro de su propio contenedor -->
+      <div class="image">
+        <img src="/resources/Cactus.jpg" alt="un cactus en una matera con un fondo rosa">
+      </div>
+
+      <!-- 
+        CONTENIDO: tag, título, descripción y autor van TODOS dentro de .content
+        Ese era tu error principal: h1, .desc y .author estaban fuera del .content,
+        entonces no tenían el padding de 16px y quedaban pegados al borde
+      -->
+      <div class="content">
+        <span class="tag">Design</span>
+        <h1>Embracing Minimalism</h1>
+        <p class="desc">
+          From minimalist sculptures to minimalist paintings, this blog will
+          inspire you to appreciate the beauty that lies in simplicity
+        </p>
+        <p class="author">Annie Spratt</p>
+      </div>
+
+    </div>
+
+    <div class="author-info">
+      Coded by <a href="#">Jonathan</a> | Challenge by
+      <a href="https://www.devchallenges.io" target="_blank">devChallenges.io</a>
+    </div>
+
+  </body>
+</html>
